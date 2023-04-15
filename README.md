@@ -1,8 +1,8 @@
 # delay
-delay library for microcontroller
+### delay library for microcontroller
 
-Loop 1000mS Example:
-
+##### Loop 1000mS Example:
+```c
 switch(expression) {
   case 0:
     uint32_t wTimer = tbSetDelay(1000);
@@ -15,4 +15,4 @@ switch(expression) {
   default:
     break;
 }
-
+```
