@@ -5,10 +5,10 @@
 ```c
 switch(expression) {
   case 0:
-    uint32_t wTimer = tbSetDelay(1000);
+    uint32_t timer = tb_set_delay(1000);
     expression = 1;
   case 1:
-    if(tbDelayIsElapsed(wTimer)) {
+    if(tb_delay_is_elapsed(timer)) {
       /* code */
       expression = 0;
     }
