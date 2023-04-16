@@ -1,34 +1,33 @@
 
 #include "delay.h"
 
-static volatile uint32_t dwTimebase = 0;
+static volatile uint32_t timebase = 0;
 
-void tbInit(void) {
-    dwTimebase = 0;
-//     timerInit();
+void tb_init(void) {
+    timebase = 0;
+    /* timer_init(); */
 }
 
-uint32_t tbGetMs(void) {
-    return dwTimebase;
+uint32_t tb_get_ms(void) {
+    return timebase;
 }
 
-uint32_t tbSetDelay(const uint32_t dwDelay) {
-    return dwTimebase + dwDelay;
+uint32_t tb_set_delay(const uint32_t delay) {
+    return timebase + delay;
 }
 
-bool tbDelayIsElapsed(const uint32_t hTimer) {
-    return ((dwTimebase - hTimer) < (1UL << 31));
+bool tb_delay_is_elapsed(const uint32_t timer) {
+    return ((timebase - timer) < (1UL << 31));
 }
 
-uint32_t tbDelayRemainMs(const uint32_t hTimer) {
-    if ((dwTimebase - hTimer) > (1UL << 31)) {
-        return (hTimer - dwTimebase);
+uint32_t tb_delay_remain_ms(const uint32_t timer) {
+    if ((timebase - timer) > (1UL << 31)) {
+        return (timer - timebase);
     } else {
         return 0;
     }
 }
 
-void tbInterruptHandler() {
-    dwTimebase++;
+void tb_interrupt_handler() {
+    timebase++;
 }
-
